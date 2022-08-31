@@ -1,0 +1,8 @@
+version: "3"
+services:
+  updatedns:
+    build: ./docker/.
+    image: updatedns
+    restart: unless-stopped
+    env_file:
+      - ./.env
