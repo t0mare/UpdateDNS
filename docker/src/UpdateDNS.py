@@ -11,10 +11,10 @@ dnsID = environ['DNSID']
 dnsHost = environ['DNSHOST']
 dnsrecord = {'host': dnsHost, 'ttl': 300, 'type': 'A', 'data': ip}
 dt = datetime.now()
-time = dt.strftime("%H:%M:%S %Y-%m-%d")
+time = dt.strftime("%Y-%m-%d %H:%M:%S")
 
 session = Session()
 session.auth = (apiUser, apiKey)
 auth = session.post('https://' + apiURL)
 response = session.put('https://' + apiURL + '/v0/domains/' + domainid + '/dns/' + dnsID, json=dnsrecord)
-print(time + " " + response.url + " " + str(response.status_code))
+print(time + ' ' + ip + ' ' + response.url + ' ' + str(response.status_code))
